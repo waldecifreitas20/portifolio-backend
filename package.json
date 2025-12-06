@@ -1,36 +1,24 @@
 {
-  "name": "back-end",
-  "version": "0.0.5",
-  "description": "RESTful API built with Express, TypeScript, and Prisma to power my personal portfolio website.",
-  "main": "main.js",
+  "name": "portfolio-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "compile": "npx tsc",
-    "dev": "nodemon src/main.ts --watch",
-    "start": "node ./dist/main.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/waldecifreitas20/portifolio-backend.git"
   },
-  "author": "Waldeci Freitas",
+  "author": "waldeci freitas",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/waldecifreitas20/portifolio-backend/issues"
   },
   "homepage": "https://github.com/waldecifreitas20/portifolio-backend#readme",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10",
-    "prisma": "^6.18.0"
-  },
   "devDependencies": {
-    "@prisma/client": "^6.18.0",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.5",
-    "@types/node": "^24.10.0",
-    "ts-node": "^10.9.2",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
