@@ -10,4 +10,4 @@ log(DATABASE_URL);
 const adapter = new PrismaBetterSqlite3({ url: DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
-export const Prisma = prisma;
+export const Database = prisma;
