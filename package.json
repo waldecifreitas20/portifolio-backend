@@ -7,6 +7,8 @@
   "scripts": {
     "test": "jest",
     "dev-watch": "tsx --watch src/index.ts",
+    "dev-migrate": "npx prisma migrate dev",
+    "generate": "npx prisma generate",
     "dev": "tsx src/index.ts",
     "prisma-studio": "npx prisma studio --config ./prisma.config.ts"
   },

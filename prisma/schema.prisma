@@ -13,11 +13,53 @@ datasource db {
 
 /* models */
 model Technology {
-  id              Int    @id
-  name            String @unique
+  id              String  @id @default(uuid())
+  name            String  @unique
   desc            String
-  hexColor        String @map("hex_color")
-  officialWebsite String @map("official_website")
-  logoUrl         String @map("logo_url")
+  hexColor        String  @map("hex_color")
+  officialWebsite String  @map("official_website")
+  logoUrl         String  @map("logo_url")
   isBackend       Boolean @map("is_backend")
+
+  projects Project[]
 } 
+
+
+model Project {
+  id              String  @id @default(uuid())
+  name            String 
+  description     String
+  repositoryUrl   String  @map("repository_url")
+  deployUrl       String  @map("deploy_url")
+  thumbnailUrl    String  @map("thumbnail_url")
+  category ProjectCategory @relation(fields: [fkCategoryId], references: [id])
+  
+
+  fkCategoryId String
+  skills Skill[]
+  technologies Technology[]
+}
+
+model Skill {
+  id              String  @id @default(uuid())
+  name            String   
+
+  project Project[]
+}
+
+model ProjectCategory {
+  id              String  @id @default(uuid())
+  name            String
+
+  project Project[]
+}
+
+
+model Message {
+  id              String  @id @default(uuid())
+  date            DateTime @default(now())
+  senderName      String
+  senderEmail     String
+  subject         String
+}
+
