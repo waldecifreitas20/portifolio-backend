@@ -4,3 +4,10 @@
 *.env.*
 
 .ignore
+
+/src/generated/prisma
+
+*.db
+
+*/generated/prisma
+

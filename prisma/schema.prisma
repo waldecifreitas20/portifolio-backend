@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+
+/* models */
+model Technology {
+  id              Int    @id
+  name            String @unique
+  desc            String
+  hexColor        String @map("hex_color")
+  officialWebsite String @map("official_website")
+  logoUrl         String @map("logo_url")
+  isBackend       Boolean @map("is_backend")
+} 
