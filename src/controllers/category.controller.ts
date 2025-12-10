@@ -1,12 +1,21 @@
-async function create(req: Request, res: any) {
-  return res.json({ msg: 'only admim can access this route' });
-}
+import { CategoryService } from "../services/category.service";
 
-async function remove(req: Request, res: any) {
-  return res.json({ msg: 'only admim can access this route' })
-}
+export class CategoryController {
+  private services: CategoryService;
 
+  constructor() {
+    this.services = new CategoryService();
+  }
 
-export default{
-  create, remove
+  async create(req: any, res: any) {
+    const { category_name } = req.body;
+    const response = await this.services.create(category_name);
+
+    return res.status(response.status).json(response);
+  }
+
+  async remove(req: Request, res: any) {
+    return res.json({ msg: 'only admim can access this route' })
+  }
+
 }
