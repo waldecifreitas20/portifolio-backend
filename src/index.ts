@@ -4,6 +4,8 @@ import { adminRouter } from "./routes/admin";
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   return res.json({ msg: '200 ok' });
 });

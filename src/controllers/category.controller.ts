@@ -7,10 +7,12 @@ export class CategoryController {
     this.services = new CategoryService();
   }
 
-  async create(req: any, res: any) {
+  create = async (req: any, res: any) => {
     const { category_name } = req.body;
-    const response = await this.services.create(category_name);
 
+    console.log(this);
+
+    const response = await this.services.create(category_name);
     return res.status(response.status).json(response);
   }
 

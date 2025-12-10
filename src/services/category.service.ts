@@ -1,6 +1,5 @@
 import { CategoryRepository } from './../repositories/category.repository';
-import type { ProjectCategory } from "../generated/prisma/client";
-import type { HttpErrorResponse, HttpResponse } from '../types/httpResponses';
+import type { HttpErrorResponse, HttpResponse } from '../utils/httpResponses';
 
 export class CategoryService {
   private categoryRepository: CategoryRepository;
@@ -9,9 +8,10 @@ export class CategoryService {
     this.categoryRepository = new CategoryRepository();
   }
 
-  async create(category: ProjectCategory): Promise<HttpResponse | HttpErrorResponse> {
+  async create(category: string): Promise<HttpResponse | HttpErrorResponse> {
     try {
-      await this.categoryRepository.create(category.name);
+      await this.categoryRepository.create(category);
+
       return {
         message: 'success',
         status: 200,
@@ -19,7 +19,7 @@ export class CategoryService {
     } catch (error) {
       console.error(error);
       return {
-        error: 'internal serve',
+        error: 'internal error',
         status: 502
       }
     }
