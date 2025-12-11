@@ -24,4 +24,20 @@ export class CategoryService {
       }
     }
   }
+
+  async delete(categoryId: string) {
+    try {
+      await this.categoryRepository.delete(categoryId);
+
+      return {
+        status: 201,
+      }
+    } catch (error) {
+      console.error(error);
+      return {
+        error: 'internal error',
+        status: 502
+      }
+    }
+  }
 }

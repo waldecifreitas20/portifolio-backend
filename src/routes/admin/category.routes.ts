@@ -8,6 +8,7 @@ const controller = new CategoryController();
 
 
 router.post('/add',
+  AdminMiddlewares.checkCredentials,
   controller.create
 );
 router.delete('/delete/:id',
