@@ -1,18 +1,18 @@
+import { AdminMiddleware } from './../../middlewares/admin.middleware';
 import { Router } from "express";
 import { CategoryController } from "../../controllers/category.controller";
-import { AdminMiddlewares } from "../../middlewares/admin.middleware";
 
 
 const router = Router();
 const controller = new CategoryController();
-
+const middlewares = new AdminMiddleware();
 
 router.post('/add',
-  AdminMiddlewares.checkCredentials,
+  middlewares.checkCredentials,
   controller.create
 );
 router.delete('/delete/:id',
-  AdminMiddlewares.checkCredentials,
+  middlewares.checkCredentials,
   controller.remove
 );
 
