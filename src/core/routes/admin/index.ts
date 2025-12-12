@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { ProjectRouter } from "./project.routes";
+import { Router } from 'express';
+import { ProjectRouter } from './project.routes';
 
 
 const adminRouter = Router();

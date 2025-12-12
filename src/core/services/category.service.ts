@@ -1,5 +1,5 @@
-import { CategoryRepository } from './../repositories/category.repository';
-import type { HttpErrorResponse, HttpResponse } from '../utils/httpResponses';
+import { CategoryRepository } from '../repositories/category.repository';
+import type { HttpErrorResponse, HttpResponse } from '../../utils/httpResponses';
 
 export class CategoryService {
   private categoryRepository: CategoryRepository;

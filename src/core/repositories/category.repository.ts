@@ -1,4 +1,4 @@
-import { Database } from "../config/database";
+import { Database } from '../../config/database';
 
 export class CategoryRepository {
 

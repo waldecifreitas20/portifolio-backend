@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { adminRouter } from "./routes/admin";
+import { adminRouter } from './core/routes/admin';
 
 const app = express();
 
