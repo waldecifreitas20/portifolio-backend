@@ -1,6 +1,7 @@
 import express from 'express';
 
 import { adminRouter } from './core/routes/admin';
+import { ProjectRouter } from './core/routes/project.routes';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/admin', adminRouter);
+app.use('/projects', ProjectRouter);
 
 
 
