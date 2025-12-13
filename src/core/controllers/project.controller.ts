@@ -13,11 +13,12 @@ export class ProjectController {
     return res.status(response.status).json(response);
   }
 
-  update = async (req: Request, res: any) => {
+  update = async (req: any, res: any) => {
     return res.json({ msg: 'ONLY ADMIN IS ALLOWED TO ACCESS THIS ROUTE' });
   }
 
-  getAll = async (req: Request, res: any) => {
-    return res.json({ projects: [] });
+  getAll = async (req: any, res: any) => {
+    const response = await this.services.getAll();
+    return res.status(response.status).json(response);
   }
 }

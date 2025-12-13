@@ -24,4 +24,20 @@ export class ProjectService {
       }
     }
   }
+
+  async getAll(): Promise<any | HttpErrorResponse> {
+    try {
+      const projects = await this.repository.getAll();
+      return {
+        status: 200,
+        projects,
+      }
+    } catch (error) {
+      console.error(error);
+      return {
+        status: 502,
+        error: 'Internal server error',
+      }
+    }
+  }
 }

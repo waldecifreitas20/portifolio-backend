@@ -5,4 +5,14 @@ export class ProjectRepository {
   async create(project: Project) {
     return await Database.project.create({ data: project });
   }
+
+  async getAll() {
+    return await Database.project.findMany({
+      include: {
+        category: true,
+        skills: true,
+        technologies: true,
+      }
+    });
+  }
 }
