@@ -19,7 +19,7 @@ export class TechnologyService {
     } catch (error: any) {
       const errorMessage = error.code ? getDatabaseError(error.code) : 'Internal Server Error';
 
-      return new AppResponse(errorMessage, 502);
+      return new AppResponse({ error: errorMessage }, 502);
     }
   }
 

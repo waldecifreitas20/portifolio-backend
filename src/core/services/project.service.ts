@@ -32,7 +32,7 @@ export class ProjectService {
     } catch (error) {
       console.error(error);
 
-      return new AppResponse('internal error', 502);
+      return new AppResponse({ error: 'internal error' }, 502);
     }
   }
 
@@ -46,7 +46,7 @@ export class ProjectService {
       return new AppResponse({ projects });
     } catch (error) {
       console.error(error);
-      return new AppResponse('internal error', 502);
+      return new AppResponse({ error: 'internal error' }, 502);
 
     }
   }

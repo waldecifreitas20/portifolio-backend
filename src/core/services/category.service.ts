@@ -15,7 +15,7 @@ export class CategoryService {
       return new AppResponse('success');
     } catch (error) {
       console.error(error);
-      return new AppResponse('internal error', 502);
+      return new AppResponse({ error: 'internal error' }, 502);
     }
   }
 
@@ -26,7 +26,7 @@ export class CategoryService {
       return new AppResponse('success', 204);
     } catch (error) {
       console.error(error);
-      return new AppResponse('internal error', 502);
+      return new AppResponse({ error: 'internal error' }, 502);
     }
   }
 }
