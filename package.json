@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "dev-watch": "tsx --watch src/app.ts",
+    "dev:watch": "tsx --watch src/app.ts",
     "dev-migrate": "npx prisma migrate dev",
     "generate": "npx prisma generate",
     "dev": "tsx src/app.ts",
