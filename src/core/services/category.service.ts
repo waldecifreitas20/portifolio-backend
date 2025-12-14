@@ -1,5 +1,5 @@
 import { CategoryRepository } from '../repositories/category.repository';
-import type { HttpErrorResponse, HttpResponse } from '../../utils/httpResponses';
+import { AppResponse, } from '../../utils/responses';
 
 export class CategoryService {
   private categoryRepository: CategoryRepository;
@@ -8,20 +8,14 @@ export class CategoryService {
     this.categoryRepository = new CategoryRepository();
   }
 
-  async create(category: string): Promise<HttpResponse | HttpErrorResponse> {
+  async create(category: string): Promise<AppResponse> {
     try {
       await this.categoryRepository.create(category);
 
-      return {
-        message: 'success',
-        status: 200,
-      }
+      return new AppResponse('success');
     } catch (error) {
       console.error(error);
-      return {
-        error: 'internal error',
-        status: 502
-      }
+      return new AppResponse('internal error', 502);
     }
   }
 
@@ -29,15 +23,10 @@ export class CategoryService {
     try {
       await this.categoryRepository.delete(categoryId);
 
-      return {
-        status: 201,
-      }
+      return new AppResponse('success', 204);
     } catch (error) {
       console.error(error);
-      return {
-        error: 'internal error',
-        status: 502
-      }
+      return new AppResponse('internal error', 502);
     }
   }
 }

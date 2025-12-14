@@ -1,6 +1,6 @@
 import type { GetAllProjectsResponse, ProjectDto } from '../../dto/projects.dto';
 import type { Project } from '../../generated/prisma/client';
-import type { HttpErrorResponse, HttpResponse } from '../../utils/httpResponses';
+import { AppResponse } from '../../utils/responses';
 import { ProjectRepository } from '../repositories/project.repository';
 
 export class ProjectService {
@@ -25,23 +25,18 @@ export class ProjectService {
     }
   }
 
-  async create(project: Project): Promise<HttpResponse | HttpErrorResponse> {
+  async create(project: Project): Promise<AppResponse> {
     try {
-      await this.repository.create(project);
-      return {
-        status: 201,
-        message: 'created',
-      }
+      const { id } = await this.repository.create(project);
+      return new AppResponse({ projectId: id }, 201);
     } catch (error) {
       console.error(error);
-      return {
-        status: 502,
-        error: 'Internal server error',
-      }
+
+      return new AppResponse('internal error', 502);
     }
   }
 
-  async getAll(): Promise<GetAllProjectsResponse | HttpErrorResponse> {
+  async getAll(): Promise<GetAllProjectsResponse | AppResponse> {
     try {
       const response = await this.repository.getAll();
 
@@ -54,10 +49,8 @@ export class ProjectService {
       }
     } catch (error) {
       console.error(error);
-      return {
-        status: 502,
-        error: 'Internal server error',
-      }
+      return new AppResponse('internal error', 502);
+     
     }
   }
 }
