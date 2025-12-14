@@ -12,6 +12,7 @@ export class MessageController {
   }
 
   getAll = async (req: any, res: any) => {
-    return res.json({ messages: [] });
+    const response = await this.service.getAll();
+    return sendResponse(res, response);
   }
 }

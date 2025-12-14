@@ -14,4 +14,14 @@ export class MessageService {
       return new AppResponse({ error: 'unable to save' }, 502);
     }
   }
+
+  async getAll() {
+    try {
+      const messages = await this.repository.getAll();
+      return new AppResponse({ messages });
+    } catch (error) {
+      console.error(error);
+      return new AppResponse({ error: 'internal server error' }, 502);
+    }
+  }
 }
