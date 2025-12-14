@@ -14,4 +14,4 @@ router.post('/add', adminMiddleware.checkCredentials, controller.create);
 router.patch('/update/:id', controller.update);
 
 
-export const ProjectRouter = router;
+export const AdminProjectRouter = router;
