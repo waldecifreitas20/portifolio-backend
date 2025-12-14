@@ -1,3 +1,4 @@
+import { sendResponse } from "../../utils/responses";
 import { TechnologyService } from "../services/tech.service";
 
 export class TechnologyController {
@@ -8,12 +9,7 @@ export class TechnologyController {
     const tech = req.body;
     const response = await this.service.create(tech);
 
-    return res
-      .status(response.status)
-      .json({
-        status: response.status,
-        ...response.payload,
-      });
+    return sendResponse(res, response);
   }
 
   getAll = async (req: any, res: any) => {

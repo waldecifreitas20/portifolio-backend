@@ -36,21 +36,18 @@ export class ProjectService {
     }
   }
 
-  async getAll(): Promise<GetAllProjectsResponse | AppResponse> {
+  async getAll(): Promise<AppResponse> {
     try {
       const response = await this.repository.getAll();
 
       const projects: Array<ProjectDto> = response
         .map(project => this.formatToResponse(project));
 
-      return {
-        status: 200,
-        projects,
-      }
+      return new AppResponse({ projects });
     } catch (error) {
       console.error(error);
       return new AppResponse('internal error', 502);
-     
+
     }
   }
 }

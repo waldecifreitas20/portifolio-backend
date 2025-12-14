@@ -7,3 +7,12 @@ export class AppResponse {
     this.payload = typeof payload === 'string' ? { message: payload } : payload;
   }
 }
+
+export const sendResponse = (sender: any, response: AppResponse) => {
+  return sender
+    .status(response.status)
+    .json({
+      status: response.status,
+      ...response.payload,
+    });
+}

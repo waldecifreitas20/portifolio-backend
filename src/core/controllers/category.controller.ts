@@ -1,3 +1,4 @@
+import { sendResponse } from '../../utils/responses';
 import { CategoryService } from '../services/category.service';
 
 export class CategoryController {
@@ -11,14 +12,15 @@ export class CategoryController {
     const { category_name } = req.body;
     const response = await this.services.create(category_name);
 
-    return res.status(response.status).json(response);
+    return sendResponse(res, response);
+
   }
 
   remove = async (req: any, res: any) => {
     const { id } = req.params;
     const response = await this.services.delete(id);
 
-    return res.status(response.status).json(response);
+    return sendResponse(res, response);
   }
 
 }

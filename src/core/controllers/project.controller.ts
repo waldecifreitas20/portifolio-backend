@@ -1,3 +1,4 @@
+import { sendResponse } from '../../utils/responses';
 import { ProjectService } from '../services/project.service';
 
 export class ProjectController {
@@ -10,7 +11,8 @@ export class ProjectController {
   create = async (req: any, res: any) => {
     const project = req.body;
     const response = await this.services.create(project);
-    return res.status(response.status).json(response);
+    return sendResponse(res, response);
+
   }
 
   update = async (req: any, res: any) => {
@@ -19,6 +21,6 @@ export class ProjectController {
 
   getAll = async (req: any, res: any) => {
     const response = await this.services.getAll();
-    return res.status(response.status).json(response);
+    return sendResponse(res, response);
   }
 }
