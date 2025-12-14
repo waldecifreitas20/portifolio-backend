@@ -10,4 +10,8 @@ export class MessageController {
 
     return sendResponse(res, response);
   }
+
+  getAll = async (req: any, res: any) => {
+    return res.json({ messages: [] });
+  }
 }
