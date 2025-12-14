@@ -12,9 +12,9 @@ export class TechnologyService {
 
   async create(technology: CreateTechnologyDto): Promise<AppResponse> {
     try {
-      await this.repository.create(technology);
+      const { id } = await this.repository.create(technology);
 
-      return new AppResponse('success');
+      return new AppResponse({ message: 'success', techId: id });
 
     } catch (error: any) {
       const errorMessage = error.code ? getDatabaseError(error.code) : 'Internal Server Error';

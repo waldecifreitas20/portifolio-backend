@@ -10,9 +10,9 @@ export class CategoryService {
 
   async create(category: string): Promise<AppResponse> {
     try {
-      await this.categoryRepository.create(category);
+      const { id } = await this.categoryRepository.create(category);
 
-      return new AppResponse('success');
+      return new AppResponse({ message: 'success', categoryId: id });
     } catch (error) {
       console.error(error);
       return new AppResponse({ error: 'internal error' }, 502);
@@ -23,7 +23,7 @@ export class CategoryService {
     try {
       await this.categoryRepository.delete(categoryId);
 
-      return new AppResponse('success', 204);
+      return new AppResponse('deleted with success', 204);
     } catch (error) {
       console.error(error);
       return new AppResponse({ error: 'internal error' }, 502);
