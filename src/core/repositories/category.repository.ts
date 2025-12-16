@@ -1,9 +1,10 @@
 import { Database } from '../../config/database';
 
 export class CategoryRepository {
+  private table = Database.projectCategory;
 
   async create(name: string) {
-    return await Database.projectCategory
+    return await this.table
       .create({ data: { name } })
       .finally(() => Database.$disconnect());
   }
