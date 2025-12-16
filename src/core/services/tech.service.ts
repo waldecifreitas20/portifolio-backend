@@ -13,15 +13,30 @@ export class TechnologyService {
   async create(technology: CreateTechnologyDto): Promise<AppResponse> {
     try {
       const { id } = await this.repository.create(technology);
-
       return new AppResponse({ message: 'success', techId: id });
 
     } catch (error: any) {
-      const errorMessage = error.code ? getDatabaseError(error.code) : 'Internal Server Error';
+
+      const errorMessage =
+        error.code ?
+          getDatabaseError(error.code)
+          : 'Internal Server Error';
 
       return new AppResponse({ error: errorMessage }, 502);
     }
   }
 
 
+  async getAll() {
+    try {
+      const technologies = await this.repository.getAll();
+      return new AppResponse({ technologies });
+
+    } catch (error: any) {
+
+      console.error(error);
+      return new AppResponse({ error: 'internal server error' }, 502);
+    }
+
+  }
 }

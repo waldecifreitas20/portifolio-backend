@@ -13,9 +13,8 @@ export class TechnologyController {
   }
 
   getAll = async (req: any, res: any) => {
-    return res
-      .status(201)
-      .json({ msg: '200 ok' });
+    const response = await this.service.getAll();
+    return sendResponse(res, response);
   }
 
 }
