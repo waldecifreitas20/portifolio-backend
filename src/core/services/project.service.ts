@@ -1,5 +1,5 @@
-import type { GetAllProjectsResponse, ProjectDto } from '../../dto/projects.dto';
-import type { Project } from '../../generated/prisma/client';
+import type { CreateProjectDto } from '../../dto/projects.dto';
+import { getDatabaseError } from '../../utils/databaseErrors';
 import { AppResponse } from '../../utils/responses';
 import { ProjectRepository } from '../repositories/project.repository';
 
@@ -11,7 +11,7 @@ export class ProjectService {
   }
 
 
-  private formatToResponse(projectScheme: any): ProjectDto {
+  private formatToResponse(projectScheme: any) {
     return {
       id: projectScheme.id,
       category: projectScheme.category.name,
@@ -25,7 +25,7 @@ export class ProjectService {
     }
   }
 
-  async create(project: Project): Promise<AppResponse> {
+  async create(project: CreateProjectDto): Promise<AppResponse> {
     try {
       const { id } = await this.repository.create(project);
       return new AppResponse({ projectId: id }, 201);
@@ -40,7 +40,7 @@ export class ProjectService {
     try {
       const response = await this.repository.getAll();
 
-      const projects: Array<ProjectDto> = response
+      const projects = response
         .map(project => this.formatToResponse(project));
 
       return new AppResponse({ projects });
@@ -48,6 +48,23 @@ export class ProjectService {
       console.error(error);
       return new AppResponse({ error: 'internal error' }, 502);
 
+    }
+  }
+
+  async delete(projectId: number) {
+    try {
+      await this.repository.delete(Number(projectId));
+
+      return new AppResponse(undefined, 204);
+    } catch (error: any) {
+      console.error(error);
+
+      const errorMessage =
+        error.code ?
+          getDatabaseError(error.code)
+          : 'Internal Server Error';
+
+      return new AppResponse({ error: errorMessage }, 502);
     }
   }
 }

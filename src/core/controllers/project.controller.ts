@@ -15,8 +15,10 @@ export class ProjectController {
 
   }
 
-  update = async (req: any, res: any) => {
-    return res.json({ msg: 'ONLY ADMIN IS ALLOWED TO ACCESS THIS ROUTE' });
+  delete = async (req: any, res: any) => {
+    const { id } = req.params;
+    const response = await this.services.delete(id);
+    return sendResponse(res, response);
   }
 
   getAll = async (req: any, res: any) => {

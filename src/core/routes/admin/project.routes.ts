@@ -11,7 +11,7 @@ const adminMiddleware = new AdminMiddleware();
 router.use('/categories', CategoryRouter);
 
 router.post('/add', adminMiddleware.checkCredentials, controller.create);
-router.patch('/update/:id', controller.update);
+router.delete('/delete/:id', controller.delete);
 
 
 export const AdminProjectRouter = router;
