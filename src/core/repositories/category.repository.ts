@@ -8,7 +8,12 @@ export class CategoryRepository {
       .finally(() => Database.$disconnect());
   }
 
-  async delete(id: string) {
-    return await Database.projectCategory.delete({ where: { id: id } });
+  async delete(id: number) {
+    return await Database.projectCategory.delete({
+      where: { id, },
+      include: {
+        project: true,
+      }
+    });
   }
 }
