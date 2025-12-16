@@ -8,7 +8,14 @@ export class TechRepository {
     return await this.table.create({ data: tech });
   }
 
-  async getAll() {
-    return await this.table.findMany();
+  async getAll(minimal?: boolean) {
+    const select = minimal ? {
+      select: {
+        id: true,
+        name: true,
+      }
+    } : undefined;
+
+    return await this.table.findMany(select);
   }
 }

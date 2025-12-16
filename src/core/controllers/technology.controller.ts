@@ -4,7 +4,6 @@ import { TechnologyService } from "../services/tech.service";
 export class TechnologyController {
   private service = new TechnologyService();;
 
-
   create = async (req: any, res: any) => {
     const tech = req.body;
     const response = await this.service.create(tech);
@@ -13,7 +12,9 @@ export class TechnologyController {
   }
 
   getAll = async (req: any, res: any) => {
-    const response = await this.service.getAll();
+    const { minimal } = req.query;
+    const response = await this.service.getAll(minimal);
+
     return sendResponse(res, response);
   }
 

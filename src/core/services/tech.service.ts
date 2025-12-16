@@ -27,10 +27,10 @@ export class TechnologyService {
   }
 
 
-  async getAll() {
+  async getAll(isMinimal?: boolean) {
     try {
-      const technologies = await this.repository.getAll();
-      return new AppResponse({ technologies });
+      const technologies = await this.repository.getAll(Boolean(isMinimal));
+      return new AppResponse({ total: technologies.length, technologies, });
 
     } catch (error: any) {
 
