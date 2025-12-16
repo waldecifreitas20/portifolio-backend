@@ -13,7 +13,7 @@ datasource db {
 
 /* models */
 model Technology {
-  id              String  @id @default(uuid())
+  id              Int  @id @default(autoincrement())
   name            String  @unique
   desc            String
   hexColor        String  @map("hex_color")
@@ -26,7 +26,7 @@ model Technology {
 
 
 model Project {
-  id              String  @id @default(uuid())
+  id              Int  @id @default(autoincrement())
   name            String 
   description     String
   repositoryUrl   String  @map("repository_url")
@@ -35,20 +35,20 @@ model Project {
   category ProjectCategory @relation(fields: [fkCategoryId], references: [id])
   
 
-  fkCategoryId String
+  fkCategoryId Int
   skills Skill[]
   technologies Technology[]
 }
 
 model Skill {
-  id              String  @id @default(uuid())
+  id              Int  @id @default(autoincrement())
   name            String   
 
   project Project[]
 }
 
 model ProjectCategory {
-  id              String  @id @default(uuid())
+  id              Int  @id @default(autoincrement())
   name            String
 
   project Project[]
@@ -56,10 +56,11 @@ model ProjectCategory {
 
 
 model Message {
-  id              String  @id @default(uuid())
+  id              Int  @id @default(autoincrement())
   date            DateTime @default(now())
   senderName      String
   senderEmail     String
   subject         String
+  text            String
 }
 
