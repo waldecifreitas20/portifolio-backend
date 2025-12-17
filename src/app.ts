@@ -19,6 +19,9 @@ app.get('/', (req, res) => {
   return res.json({ msg: '200 ok' });
 });
 
-app.listen(3000, () => {
+const { PORT, DOMAIN } = process.env;
+
+app.listen(PORT ?? 8080, () => {
   console.log('API HAS STARTED!');
+  console.log(`LISTENING AT URL: ${DOMAIN} PORT ${PORT}`);
 });
