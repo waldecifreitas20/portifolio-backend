@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "dev:watch": "tsx --watch src/app.ts",
+    "dev": "tsx --watch src/app.ts",
     "migrate": "npx prisma migrate dev",
     "generate": "npx prisma generate",
-    "dev": "tsx src/app.ts",
+    "start": "tsx src/app.ts",
     "prisma-studio": "npx prisma studio --config ./prisma.config.ts"
   },
   "repository": {
