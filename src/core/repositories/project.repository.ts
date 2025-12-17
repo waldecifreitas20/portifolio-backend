@@ -3,6 +3,11 @@ import type { CreateProjectDto } from '../../dto/projects.dto';
 
 export class ProjectRepository {
   private table = Database.project;
+  private relationships =  {
+    category: true,
+    skills: true,
+    technologies: true,
+  }
 
   async create(project: CreateProjectDto) {
     const { categoryId, technologies, skills, ...data } = project;
@@ -14,32 +19,20 @@ export class ProjectRepository {
         skills: { connect: [...skills.map(id => ({ id }))] },
         ...data
       },
-      include: {
-        category: true,
-        skills: true,
-        technologies: true,
-      },
+      include: this.relationships,
     });
   }
 
   async delete(id: number) {
     return await this.table.delete({
       where: { id },
-      include: {
-        category: true,
-        skills: true,
-        technologies: true,
-      } 
+      include: this.relationships,
     });
   }
 
   async getAll() {
     return await this.table.findMany({
-      include: {
-        category: true,
-        skills: true,
-        technologies: true,
-      }
+      include: this.relationships,
     });
   }
 }

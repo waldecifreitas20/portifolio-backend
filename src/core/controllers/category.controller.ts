@@ -13,7 +13,6 @@ export class CategoryController {
     const response = await this.services.create(category_name);
 
     return sendResponse(res, response);
-
   }
 
   remove = async (req: any, res: any) => {
