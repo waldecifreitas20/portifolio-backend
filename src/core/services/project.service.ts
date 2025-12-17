@@ -43,7 +43,7 @@ export class ProjectService {
       const projects = response
         .map(project => this.formatToResponse(project));
 
-      return new AppResponse({ projects });
+      return new AppResponse({ total: projects.length, projects,  });
     } catch (error) {
       console.error(error);
       return new AppResponse({ error: 'internal error' }, 502);
