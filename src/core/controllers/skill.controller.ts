@@ -11,7 +11,8 @@ export class SkillController {
     return sendResponse(res, response);
   }
 
-  getAll = (req: any, res: any) => {
-
+  getAll = async (req: any, res: any) => {
+    const response = await this.services.getAll();
+    return sendResponse(res, response);
   }
 }

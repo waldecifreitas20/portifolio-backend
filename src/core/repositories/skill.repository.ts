@@ -12,4 +12,8 @@ export class SkillRepository {
       data: skills.map(skill => ({ name: skill }))
     });
   }
+
+  async getAll() {
+    return await this.table.findMany();
+  }
 }

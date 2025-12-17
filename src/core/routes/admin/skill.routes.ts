@@ -7,5 +7,6 @@ const controller = new SkillController();
 const middleware = new AdminMiddleware();
 
 router.post('/add', middleware.checkCredentials, controller.create);
+router.get('/all', middleware.checkCredentials, controller.getAll);
 
 export const AdminSkillRouter = router;
