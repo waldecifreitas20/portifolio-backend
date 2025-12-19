@@ -1,5 +1,5 @@
-import { sendResponse } from "../../utils/responses";
-import { TechnologyService } from "../services/tech.service";
+import { sendResponse } from "../../utils/responses.js";
+import { TechnologyService } from "../services/tech.service.js";
 
 export class TechnologyController {
   private service = new TechnologyService();;

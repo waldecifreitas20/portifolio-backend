@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { CategoryRouter } from './category.routes';
-import { ProjectController } from '../../controllers/project.controller';
-import { AdminMiddleware } from '../../middlewares/admin.middleware';
+import { CategoryRouter } from './category.routes.js';
+import { ProjectController } from '../../controllers/project.controller.js';
+import { AdminMiddleware } from '../../middlewares/admin.middleware.js';
 
 
 const router = Router();

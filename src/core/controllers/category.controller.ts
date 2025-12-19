@@ -1,5 +1,5 @@
-import { sendResponse } from '../../utils/responses';
-import { CategoryService } from '../services/category.service';
+import { sendResponse } from '../../utils/responses.js';
+import { CategoryService } from '../services/category.service.js';
 
 export class CategoryController {
   private services: CategoryService;

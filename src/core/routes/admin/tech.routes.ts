@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { TechnologyController } from '../../controllers/technology.controller';
-import { AdminMiddleware } from '../../middlewares/admin.middleware';
+import { TechnologyController } from '../../controllers/technology.controller.js';
+import { AdminMiddleware } from '../../middlewares/admin.middleware.js';
 
 const router = Router();
 const controller = new TechnologyController();

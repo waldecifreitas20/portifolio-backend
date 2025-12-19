@@ -1,5 +1,5 @@
-import { sendResponse } from '../../utils/responses';
-import { ProjectService } from '../services/project.service';
+import { sendResponse } from '../../utils/responses.js';
+import { ProjectService } from '../services/project.service.js';
 
 export class ProjectController {
   private services: ProjectService;

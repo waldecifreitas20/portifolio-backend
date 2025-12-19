@@ -1,5 +1,5 @@
-import { sendResponse } from '../../utils/responses';
-import { MessageService } from '../services/message.service';
+import { sendResponse } from '../../utils/responses.js';
+import { MessageService } from '../services/message.service.js';
 
 export class MessageController {
   private service: MessageService = new MessageService();

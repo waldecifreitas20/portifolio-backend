@@ -11,3 +11,8 @@
 
 */generated/prisma
 
+*docker*
+fly*
+
+dist
+.github

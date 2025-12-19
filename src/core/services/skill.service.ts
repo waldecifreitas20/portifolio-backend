@@ -1,5 +1,5 @@
-import { AppResponse } from "../../utils/responses";
-import { SkillRepository } from "../repositories/skill.repository";
+import { AppResponse } from "../../utils/responses.js";
+import { SkillRepository } from "../repositories/skill.repository.js";
 
 export class SkillService {
   private repository = new SkillRepository();

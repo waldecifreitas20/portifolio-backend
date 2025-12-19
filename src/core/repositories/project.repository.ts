@@ -1,9 +1,9 @@
-import { Database } from '../../config/database';
-import type { CreateProjectDto } from '../../dto/projects.dto';
+import { Database } from '../../config/database.js';
+import type { CreateProjectDto } from '../../dto/projects.dto.js';
 
 export class ProjectRepository {
   private table = Database.project;
-  private relationships =  {
+  private relationships = {
     category: true,
     skills: true,
     technologies: true,

@@ -1,5 +1,5 @@
-import { Database } from "../../config/database";
-import type { CreateTechnologyDto } from "../../dto/technology.dto";
+import { Database } from "../../config/database.js";
+import type { CreateTechnologyDto } from "../../dto/technology.dto.js";
 
 export class TechRepository {
   private table = Database.technology;

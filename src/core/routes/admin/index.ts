@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { AdminSkillRouter } from './skill.routes';
-import { AdminMessageRouter } from './message.routes';
-import { AdminProjectRouter } from './project.routes';
-import { AdminTechnologyRouter } from './tech.routes';
+import { AdminSkillRouter } from './skill.routes.js';
+import { AdminMessageRouter } from './message.routes.js';
+import { AdminProjectRouter } from './project.routes.js';
+import { AdminTechnologyRouter } from './tech.routes.js';
 
 const adminRouter = Router();
 

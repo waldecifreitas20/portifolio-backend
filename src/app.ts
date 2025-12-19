@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 
-import { adminRouter } from './core/routes/admin';
-import { ProjectRouter } from './core/routes/project.routes';
-import { TechnologyRouter } from './core/routes/technology.routes';
-import { MessageRouter } from './core/routes/message.routes';
+import { adminRouter } from './core/routes/admin/index.js';
+import { ProjectRouter } from './core/routes/project.routes.js';
+import { TechnologyRouter } from './core/routes/technology.routes.js';
+import { MessageRouter } from './core/routes/message.routes.js';
 
 const app = express();
 

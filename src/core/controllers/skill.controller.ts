@@ -1,5 +1,5 @@
-import { sendResponse } from "../../utils/responses";
-import { SkillService } from "../services/skill.service";
+import { sendResponse } from "../../utils/responses.js";
+import { SkillService } from "../services/skill.service.js";
 
 export class SkillController {
   private services = new SkillService();

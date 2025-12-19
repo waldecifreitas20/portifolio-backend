@@ -1,5 +1,5 @@
-import { CategoryRepository } from '../repositories/category.repository';
-import { AppResponse, } from '../../utils/responses';
+import { CategoryRepository } from '../repositories/category.repository.js';
+import { AppResponse, } from '../../utils/responses.js';
 
 export class CategoryService {
   private categoryRepository: CategoryRepository;

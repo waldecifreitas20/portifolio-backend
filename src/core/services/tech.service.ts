@@ -1,7 +1,7 @@
-import { getDatabaseError } from './../../utils/databaseErrors';
+import { getDatabaseError } from './../../utils/databaseErrors.js';
 import type { CreateTechnologyDto } from "../../dto/technology.dto";
-import { AppResponse } from "../../utils/responses";
-import { TechRepository } from "../repositories/tech.repository";
+import { AppResponse } from "../../utils/responses.js";
+import { TechRepository } from "../repositories/tech.repository.js";
 
 export class TechnologyService {
   private repository: TechRepository;

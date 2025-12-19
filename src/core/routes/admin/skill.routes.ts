@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { SkillController } from '../../controllers/skill.controller';
-import { AdminMiddleware } from '../../middlewares/admin.middleware';
+import { SkillController } from '../../controllers/skill.controller.js';
+import { AdminMiddleware } from '../../middlewares/admin.middleware.js';
 
 const router = Router();
 const controller = new SkillController();

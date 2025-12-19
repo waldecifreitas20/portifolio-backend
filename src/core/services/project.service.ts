@@ -1,7 +1,7 @@
 import type { CreateProjectDto } from '../../dto/projects.dto';
-import { getDatabaseError } from '../../utils/databaseErrors';
-import { AppResponse } from '../../utils/responses';
-import { ProjectRepository } from '../repositories/project.repository';
+import { getDatabaseError } from '../../utils/databaseErrors.js';
+import { AppResponse } from '../../utils/responses.js';
+import { ProjectRepository } from '../repositories/project.repository.js';
 
 export class ProjectService {
   private repository: ProjectRepository;
@@ -43,7 +43,7 @@ export class ProjectService {
       const projects = response
         .map(project => this.formatToResponse(project));
 
-      return new AppResponse({ total: projects.length, projects,  });
+      return new AppResponse({ total: projects.length, projects, });
     } catch (error) {
       console.error(error);
       return new AppResponse({ error: 'internal error' }, 502);

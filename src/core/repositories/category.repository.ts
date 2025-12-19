@@ -1,4 +1,4 @@
-import { Database } from '../../config/database';
+import { Database } from '../../config/database.js';
 
 export class CategoryRepository {
   private table = Database.projectCategory;

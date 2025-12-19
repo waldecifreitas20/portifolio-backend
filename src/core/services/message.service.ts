@@ -1,6 +1,6 @@
-import type { Message } from "../../generated/prisma/client";
-import { AppResponse } from "../../utils/responses";
-import { MessageRepository } from "../repositories/message.respository";
+import type { Message } from "../../generated/prisma/client.js";
+import { AppResponse } from "../../utils/responses.js";
+import { MessageRepository } from "../repositories/message.repository.js";
 
 export class MessageService {
   private repository: MessageRepository = new MessageRepository();

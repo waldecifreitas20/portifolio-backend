@@ -1,4 +1,4 @@
-import { TechnologyController } from '../controllers/technology.controller';
+import { TechnologyController } from '../controllers/technology.controller.js';
 import { Router } from 'express';
 
 

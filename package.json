@@ -9,7 +9,8 @@
     "dev": "tsx --watch src/app.ts",
     "migrate": "npx prisma migrate dev",
     "generate": "npx prisma generate",
-    "start": "tsx src/app.ts",
+    "build": "tsc",
+    "start": "node dist/src/app.js",
     "prisma-studio": "npx prisma studio --config ./prisma.config.ts"
   },
   "repository": {
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/waldecifreitas20/portifolio-backend#readme",
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
     "@types/better-sqlite3": "^7.6.13",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
