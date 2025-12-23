@@ -18,6 +18,7 @@ model Technology {
   id              Int     @id @default(autoincrement())
   name            String  @unique
   desc            String
+  desc_en         String
   hexColor        String  @map("hex_color")
   officialWebsite String  @map("official_website")
   logoUrl         String  @map("logo_url")
