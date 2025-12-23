@@ -35,4 +35,8 @@ export class ProjectRepository {
       include: this.relationships,
     });
   }
+
+  async clear() {
+    return await this.table.deleteMany();
+  }
 }

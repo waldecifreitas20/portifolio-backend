@@ -18,4 +18,8 @@ export class TechRepository {
 
     return await this.table.findMany(select);
   }
+
+  async clear() {
+    return await this.table.deleteMany();
+  }
 }

@@ -17,4 +17,8 @@ export class CategoryRepository {
       }
     });
   }
+
+  async clear() {
+    return await this.table.deleteMany();
+  }
 }

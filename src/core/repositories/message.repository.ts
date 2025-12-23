@@ -11,4 +11,8 @@ export class MessageRepository {
   async getAll() {
     return await this.table.findMany();
   }
+
+  async clear() {
+    return await this.table.deleteMany();
+  }
 }

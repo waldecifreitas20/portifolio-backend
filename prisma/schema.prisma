@@ -8,12 +8,14 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
-
-/* models */
+/**
+ * models
+ */
 model Technology {
-  id              Int  @id @default(autoincrement())
+  id              Int     @id @default(autoincrement())
   name            String  @unique
   desc            String
   hexColor        String  @map("hex_color")
@@ -22,45 +24,41 @@ model Technology {
   isBackend       Boolean @map("is_backend")
 
   projects Project[]
-} 
-
+}
 
 model Project {
-  id              Int  @id @default(autoincrement())
-  name            String 
-  description     String
-  repositoryUrl   String  @map("repository_url")
-  deployUrl       String  @map("deploy_url")
-  thumbnailUrl    String  @map("thumbnail_url")
-  category ProjectCategory @relation(fields: [fkCategoryId], references: [id])
-  
+  id            Int             @id @default(autoincrement())
+  name          String
+  description   String
+  repositoryUrl String          @map("repository_url")
+  deployUrl     String          @map("deploy_url")
+  thumbnailUrl  String          @map("thumbnail_url")
+  category      ProjectCategory @relation(fields: [fkCategoryId], references: [id])
 
   fkCategoryId Int
-  skills Skill[]
+  skills       Skill[]
   technologies Technology[]
 }
 
 model Skill {
-  id              Int  @id @default(autoincrement())
-  name            String   
+  id   Int    @id @default(autoincrement())
+  name String
 
   project Project[]
 }
 
 model ProjectCategory {
-  id              Int  @id @default(autoincrement())
-  name            String
+  id   Int    @id @default(autoincrement())
+  name String
 
   project Project[]
 }
 
-
 model Message {
-  id              Int  @id @default(autoincrement())
-  date            DateTime @default(now())
-  senderName      String
-  senderEmail     String
-  subject         String
-  text            String
+  id          Int      @id @default(autoincrement())
+  date        DateTime @default(now())
+  senderName  String
+  senderEmail String
+  subject     String
+  text        String
 }
-
