@@ -16,3 +16,5 @@ fly*
 
 dist
 .github
+
+*/prisma/migrations
