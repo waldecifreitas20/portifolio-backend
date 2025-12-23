@@ -1,11 +1,22 @@
 import { Database } from "../../config/database.js";
-import type { CreateTechnologyDto } from "../../dto/technology.dto.js";
+import type { Technology } from "../../types/Technology.js";
 
 export class TechRepository {
   private table = Database.technology;
 
-  async create(tech: CreateTechnologyDto) {
-    return await this.table.create({ data: tech });
+  async create(tech: Technology) {
+    return await this.table.create({
+      data: {
+        name: tech.name,
+        desc: tech.description,
+        desc_en: tech.description_en,
+        hexColor: tech.hexColor,
+        officialWebsite: tech.officialWebsite,
+        logoUrl: tech.logoUrl,
+        isBackend: tech.isBackend,
+        isFrontend: !!tech.isFrontend,
+      }
+    });
   }
 
   async getAll(minimal?: boolean) {

@@ -8,11 +8,11 @@ export class CategoryService {
     this.categoryRepository = new CategoryRepository();
   }
 
-  async create(category: string): Promise<AppResponse> {
+  async create(category_pt: string, category_en: string): Promise<AppResponse> {
     try {
-      const { id } = await this.categoryRepository.create(category);
-
+      const { id } = await this.categoryRepository.create(category_pt, category_en);
       return new AppResponse({ message: 'success', categoryId: id });
+      
     } catch (error) {
       console.error(error);
       return new AppResponse({ error: 'internal error' }, 502);

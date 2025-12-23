@@ -3,9 +3,14 @@ import { Database } from '../../config/database.js';
 export class CategoryRepository {
   private table = Database.projectCategory;
 
-  async create(name: string) {
+  async create(ptName: string, enName: string) {
     return await this.table
-      .create({ data: { name } })
+      .create({
+        data: {
+          name: ptName,
+          name_en: enName,
+        }
+      })
       .finally(() => Database.$disconnect());
   }
 

@@ -1,15 +1,24 @@
 import { Database } from "../../config/database.js";
+import type { Skill } from "../../types/Skill.js";
 
 export class SkillRepository {
   private table = Database.skill;
 
-  async create(skill: string) {
-    return await this.table.create({ data: { name: skill } });
+  async create(skill: Skill) {
+    return await this.table.create({
+      data: {
+        name: skill.pt,
+        name_en: skill.en
+      }
+    });
   }
 
-  async createMany(skills: Array<string>) {
+  async createMany(skills: Array<Skill>) {
     return await this.table.createMany({
-      data: skills.map(skill => ({ name: skill }))
+      data: skills.map(skill => ({
+        name: skill.pt,
+        name_en: skill.en
+      }))
     });
   }
 

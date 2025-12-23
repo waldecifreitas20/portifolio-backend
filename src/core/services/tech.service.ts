@@ -1,5 +1,5 @@
 import { getDatabaseError } from './../../utils/databaseErrors.js';
-import type { CreateTechnologyDto } from "../../dto/technology.dto";
+import type { Technology } from "../../types/Technology.js";
 import { AppResponse } from "../../utils/responses.js";
 import { TechRepository } from "../repositories/tech.repository.js";
 
@@ -10,13 +10,14 @@ export class TechnologyService {
     this.repository = new TechRepository();
   }
 
-  async create(technology: CreateTechnologyDto): Promise<AppResponse> {
+  async create(technology: Technology): Promise<AppResponse> {
     try {
       const { id } = await this.repository.create(technology);
       return new AppResponse({ message: 'success', techId: id });
 
     } catch (error: any) {
-
+      console.error(error);
+      
       const errorMessage =
         error.code ?
           getDatabaseError(error.code)

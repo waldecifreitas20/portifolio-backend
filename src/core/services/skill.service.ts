@@ -1,12 +1,13 @@
+import type { Skill } from "../../types/Skill.js";
 import { AppResponse } from "../../utils/responses.js";
 import { SkillRepository } from "../repositories/skill.repository.js";
 
 export class SkillService {
   private repository = new SkillRepository();
 
-  async create(skills: string | Array<string>) {
+  async create(skills: Skill | Array<Skill>) {
     try {
-      if (typeof skills === 'string') {
+      if (!Array.isArray(skills)) {
         await this.repository.create(skills);
       } else {
         await this.repository.createMany(skills);
@@ -24,7 +25,7 @@ export class SkillService {
     try {
       const skills = await this.repository.getAll();
 
-      return new AppResponse({ skills });
+      return new AppResponse({ length: skills.length, skills });
     } catch (error) {
       console.error(error);
       return new AppResponse({ error: 'internal several error' }, 502);

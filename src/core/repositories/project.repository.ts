@@ -1,5 +1,5 @@
 import { Database } from '../../config/database.js';
-import type { CreateProjectDto } from '../../dto/projects.dto.js';
+import type { Project } from '../../types/Project.js';
 
 export class ProjectRepository {
   private table = Database.project;
@@ -9,7 +9,7 @@ export class ProjectRepository {
     technologies: true,
   }
 
-  async create(project: CreateProjectDto) {
+  async create(project: Project) {
     const { categoryId, technologies, skills, ...data } = project;
 
     return await this.table.create({
@@ -17,7 +17,12 @@ export class ProjectRepository {
         fkCategoryId: categoryId,
         technologies: { connect: [...technologies.map(id => ({ id }))] },
         skills: { connect: [...skills.map(id => ({ id }))] },
-        ...data
+        deployUrl: data.deployUrl,
+        desc: data.description,
+        desc_en: data.description_en,
+        name: data.name,
+        repositoryUrl: data.repositoryUrl,
+        thumbnailUrl:  data.thumbnailUrl,
       },
       include: this.relationships,
     });

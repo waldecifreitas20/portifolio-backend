@@ -1,4 +1,4 @@
-import type { CreateProjectDto } from '../../dto/projects.dto';
+import type { Project } from '../../types/Project';
 import { getDatabaseError } from '../../utils/databaseErrors.js';
 import { AppResponse } from '../../utils/responses.js';
 import { ProjectRepository } from '../repositories/project.repository.js';
@@ -25,7 +25,7 @@ export class ProjectService {
     }
   }
 
-  async create(project: CreateProjectDto): Promise<AppResponse> {
+  async create(project: Project): Promise<AppResponse> {
     try {
       const { id } = await this.repository.create(project);
       return new AppResponse({ projectId: id }, 201);
