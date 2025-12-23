@@ -17,7 +17,7 @@ export class TechnologyService {
 
     } catch (error: any) {
       console.error(error);
-      
+
       const errorMessage =
         error.code ?
           getDatabaseError(error.code)

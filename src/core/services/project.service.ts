@@ -1,7 +1,9 @@
+import { type Project as Model } from './../../generated/prisma/client';
 import type { Project } from '../../types/Project';
 import { getDatabaseError } from '../../utils/databaseErrors.js';
 import { AppResponse } from '../../utils/responses.js';
 import { ProjectRepository } from '../repositories/project.repository.js';
+import type { Skill } from '../../types/Skill';
 
 export class ProjectService {
   private repository: ProjectRepository;
@@ -21,7 +23,9 @@ export class ProjectService {
       repositoryUrl: projectScheme.repositoryUrl,
       skills: projectScheme.skills.map((skill: any) => skill.name),
       technologies: projectScheme.technologies,
-      thumbnailUrl: projectScheme.thumbnailUrl
+      thumbnailUrl: projectScheme.thumbnailUrl,
+
+
     }
   }
 
@@ -40,8 +44,29 @@ export class ProjectService {
     try {
       const response = await this.repository.getAll();
 
-      const projects = response
-        .map(project => this.formatToResponse(project));
+      const projects = response.map(data => {
+
+        return {
+          id: data.id,
+          category: data.category.name,
+          deployUrl: data.deployUrl,
+          description: {
+            en: data.desc_en,
+            pt: data.desc,
+          },
+          name: data.name,
+          repositoryUrl: data.repositoryUrl,
+          skills: data.skills.map(skill => {
+            return {
+              en: skill.name_en,
+              pt: skill.name
+            }
+          }),
+          technologies: data.technologies,
+          thumbnailUrl: data.thumbnailUrl,
+        }
+      }
+      );
 
       return new AppResponse({ total: projects.length, projects, });
     } catch (error) {

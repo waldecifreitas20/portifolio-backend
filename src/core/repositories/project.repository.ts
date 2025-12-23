@@ -22,7 +22,7 @@ export class ProjectRepository {
         desc_en: data.description_en,
         name: data.name,
         repositoryUrl: data.repositoryUrl,
-        thumbnailUrl:  data.thumbnailUrl,
+        thumbnailUrl: data.thumbnailUrl,
       },
       include: this.relationships,
     });
