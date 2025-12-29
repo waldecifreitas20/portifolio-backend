@@ -1,4 +1,4 @@
-import type { Message } from "../../generated/prisma/client.js";
+import type { Message } from "@prisma/client/index.js";
 import { AppResponse } from "../../utils/responses.js";
 import { MessageRepository } from "../repositories/message.repository.js";
 

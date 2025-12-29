@@ -1,9 +1,9 @@
-import { AppResponse } from '../../utils/responses';
-import { CategoryRepository } from '../repositories/category.repository';
-import { MessageRepository } from '../repositories/message.repository';
-import { ProjectRepository } from '../repositories/project.repository';
-import { SkillRepository } from '../repositories/skill.repository';
-import { TechRepository } from '../repositories/tech.repository';
+import { AppResponse } from '../../utils/responses.js';
+import { CategoryRepository } from '../repositories/category.repository.js';
+import { MessageRepository } from '../repositories/message.repository.js';
+import { ProjectRepository } from '../repositories/project.repository.js';
+import { SkillRepository } from '../repositories/skill.repository.js';
+import { TechRepository } from '../repositories/tech.repository.js';
 
 
 export const clearTableService = async () => {

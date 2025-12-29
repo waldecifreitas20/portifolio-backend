@@ -1,5 +1,5 @@
 import { Database } from "../../config/database.js";
-import type { Message } from "../../generated/prisma/client.js";
+import type { Message } from "@prisma/client/index.js";
 
 export class MessageRepository {
   private table = Database.message;

@@ -1,32 +1,13 @@
-import { type Project as Model } from './../../generated/prisma/client';
 import type { Project } from '../../types/Project';
 import { getDatabaseError } from '../../utils/databaseErrors.js';
 import { AppResponse } from '../../utils/responses.js';
 import { ProjectRepository } from '../repositories/project.repository.js';
-import type { Skill } from '../../types/Skill';
 
 export class ProjectService {
   private repository: ProjectRepository;
 
   constructor() {
     this.repository = new ProjectRepository();
-  }
-
-
-  private formatToResponse(projectScheme: any) {
-    return {
-      id: projectScheme.id,
-      category: projectScheme.category.name,
-      deployUrl: projectScheme.deployUrl,
-      description: projectScheme.description,
-      name: projectScheme.name,
-      repositoryUrl: projectScheme.repositoryUrl,
-      skills: projectScheme.skills.map((skill: any) => skill.name),
-      technologies: projectScheme.technologies,
-      thumbnailUrl: projectScheme.thumbnailUrl,
-
-
-    }
   }
 
   async create(project: Project): Promise<AppResponse> {
