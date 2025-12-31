@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
 /**
  * models
  */
@@ -20,37 +21,37 @@ model Technology {
   officialWebsite String  @map("official_website")
   logoUrl         String  @map("logo_url")
   isBackend       Boolean @map("is_backend")
-  isFrontend      Boolean @map("is_frontend") @default(false)
+  isFrontend      Boolean @default(false) @map("is_frontend")
 
   projects Project[]
+  skills   Skill[]
 }
 
 model Project {
   id            Int             @id @default(autoincrement())
   name          String
-  desc   String
-  desc_en   String
+  desc          String
+  desc_en       String
   repositoryUrl String          @map("repository_url")
   deployUrl     String          @map("deploy_url")
   thumbnailUrl  String          @map("thumbnail_url")
   category      ProjectCategory @relation(fields: [fkCategoryId], references: [id], onDelete: Cascade)
 
   fkCategoryId Int
-  skills       Skill[]
   technologies Technology[]
 }
 
 model Skill {
-  id   Int    @id @default(autoincrement())
-  name String
+  id      Int    @id @default(autoincrement())
+  name    String
   name_en String
 
-  project Project[]
+  technologies Technology[]
 }
 
 model ProjectCategory {
-  id   Int    @id @default(autoincrement())
-  name String
+  id      Int    @id @default(autoincrement())
+  name    String
   name_en String
 
   project Project[]
