@@ -5,7 +5,6 @@ export class ProjectRepository {
   private table = Database.project;
   private relationships = {
     category: true,
-    skills: true,
     technologies: true,
   }
 
@@ -16,7 +15,6 @@ export class ProjectRepository {
       data: {
         fkCategoryId: categoryId,
         technologies: { connect: [...technologies.map(id => ({ id }))] },
-        skills: { connect: [...skills.map(id => ({ id }))] },
         deployUrl: data.deployUrl,
         desc: data.description,
         desc_en: data.description_en,
@@ -37,7 +35,16 @@ export class ProjectRepository {
 
   async getAll() {
     return await this.table.findMany({
-      include: this.relationships,
+      include: {
+        technologies: {
+          include: {
+            skills: {
+              select: { name: true, name_en: true }
+            }
+          },
+        },
+        category: true,
+      }
     });
   }
 

@@ -7,4 +7,5 @@ export interface Technology {
   logoUrl: string,
   isBackend: boolean,
   isFrontend?: boolean,
+  skills: Array<number>,
 }

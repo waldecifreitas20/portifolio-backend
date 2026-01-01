@@ -37,13 +37,12 @@ export class ProjectService {
           },
           name: data.name,
           repositoryUrl: data.repositoryUrl,
-          skills: data.skills.map(skill => {
-            return {
-              en: skill.name_en,
-              pt: skill.name
-            }
-          }),
-          technologies: data.technologies,
+          technologies: data.technologies.map(tech => ({
+            ...tech,
+            skills: tech.skills.map(skill => ({
+              pt: skill.name, en: skill.name_en
+            })),
+          })),
           thumbnailUrl: data.thumbnailUrl,
         }
       }

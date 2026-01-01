@@ -15,7 +15,11 @@ export class TechRepository {
         logoUrl: tech.logoUrl,
         isBackend: tech.isBackend,
         isFrontend: !!tech.isFrontend,
-      }
+        skills: {
+          connect: tech.skills.map(skill => ({ id: skill }))
+        },
+      },
+      include: { skills: true }
     });
   }
 
@@ -27,7 +31,7 @@ export class TechRepository {
       }
     } : undefined;
 
-    return await this.table.findMany(select);
+    return await this.table.findMany({ ...select, include: { skills: true, projects: true } });
   }
 
   async clear() {
